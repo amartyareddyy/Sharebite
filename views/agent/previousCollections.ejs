@@ -1,0 +1,141 @@
+<main>
+	<%- include('../partials/agentSidebar') %>
+	
+	<div id="main-wrapper">
+		<div class="bg-white shadow-sm p-3">
+			<span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+			<h5 class="m-0 color-theme d-inline-block">Previous Collections</h5>
+		</div>
+
+		<div class="container mt-4">
+			<% if (previousCollections && previousCollections.length > 0) { %>
+				<div class="row g-4">
+					<% previousCollections.forEach((collection, index) => { %>
+						<div class="col-md-4 mb-4">
+							<div class="card h-100">
+								<% if (collection.collectionImage) { %>
+									<img src="<%= collection.collectionImage %>" 
+										class="card-img-top cursor-pointer" 
+										alt="Collection Image" 
+										style="height: 200px; object-fit: cover;"
+										data-bs-toggle="modal" 
+										data-bs-target="#imageModal<%= index %>">
+								<% } else { %>
+									<div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+										<span class="text-muted">No image uploaded</span>
+									</div>
+								<% } %>
+								<div class="card-body">
+									<h5 class="card-title text-success"><%= collection.foodType %></h5>
+									<div class="mb-2">
+										<i class="fas fa-user me-2 text-success"></i>
+										<span>Donor: <%= collection.donor.firstName + " " + collection.donor.lastName %></span>
+									</div>
+									<div class="mb-2">
+										<i class="fas fa-users me-2 text-success"></i>
+										<span>Quantity: <%= collection.quantity %> persons</span>
+									</div>
+									<div class="mb-2">
+										<i class="fas fa-map-marker-alt me-2 text-success"></i>
+										<span>Address: <%= collection.address %></span>
+									</div>
+									<div class="mb-2">
+										<i class="fas fa-clock me-2 text-success"></i>
+										<span>Collected: <%= new Date(collection.collectionTime).toLocaleString() %></span>
+									</div>
+									<div class="mt-2">
+										<span class="badge bg-success"><%= collection.status %></span>
+									</div>
+									<% if (!collection.collectionImage) { %>
+										<div class="mt-3">
+											<a href="/agent/donation/<%= collection._id %>/upload" class="btn btn-primary w-100">
+												<i class="fas fa-upload me-2"></i>Upload Collection Image
+											</a>
+										</div>
+									<% } %>
+								</div>
+							</div>
+						</div>
+
+						<!-- Image Modal -->
+						<% if (collection.collectionImage) { %>
+							<div class="modal fade" id="imageModal<%= index %>" tabindex="-1" aria-hidden="true">
+								<div class="modal-dialog modal-lg modal-dialog-centered">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">Collection Image - <%= collection.foodType %></h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body p-0">
+											<img src="<%= collection.collectionImage %>" 
+												class="img-fluid w-100" 
+												alt="Collection Image"
+												style="max-height: 80vh; object-fit: contain;">
+										</div>
+										<div class="modal-footer">
+											<div class="text-start flex-grow-1">
+												<p class="mb-1"><strong>Donor:</strong> <%= collection.donor.firstName + " " + collection.donor.lastName %></p>
+												<p class="mb-1"><strong>Collection Time:</strong> <%= new Date(collection.collectionTime).toLocaleString() %></p>
+												<p class="mb-0"><strong>Status:</strong> <span class="badge bg-success"><%= collection.status %></span></p>
+											</div>
+											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						<% } %>
+					<% }); %>
+				</div>
+			<% } else { %>
+				<div class="text-center mt-5">
+					<h4>No previous collections yet</h4>
+					<p class="text-muted">When you collect donations, they will appear here.</p>
+				</div>
+			<% } %>
+		</div>
+	</div>
+</main>
+
+<style>
+#main-wrapper {
+	margin-left: 250px;
+	transition: all 0.3s ease;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.cursor-pointer:hover {
+	opacity: 0.9;
+}
+
+.modal-dialog.modal-lg {
+	max-width: 90%;
+}
+
+.modal-body {
+	background-color: #f8f9fa;
+}
+
+.modal-content {
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+@media (max-width: 768px) {
+	#main-wrapper {
+		margin-left: 0;
+	}
+}
+</style>
+
+<script>
+// Initialize all modals
+document.addEventListener('DOMContentLoaded', function() {
+	var modals = document.querySelectorAll('.modal');
+	modals.forEach(function(modal) {
+		new bootstrap.Modal(modal);
+	});
+});
+</script>

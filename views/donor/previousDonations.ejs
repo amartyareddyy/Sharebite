@@ -1,0 +1,165 @@
+<%- include('../partials/donorSidebar') %>
+
+<div id="main-wrapper" class="min-vh-100 d-flex flex-column">
+	<div class="bg-white shadow-sm p-3">
+		<span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+		<h5 class="m-0 color-theme d-inline-block">Previous Donations</h5>
+	</div>
+
+	<div class="container-fluid py-4">
+		<div class="row g-4">
+			<% previousDonations.forEach((donation, index) => { %>
+				<div class="col-12 col-md-6">
+					<div class="card shadow-sm h-100">
+						<div class="card-body">
+							<h5 class="card-title text-success mb-3"><%= donation.foodType %></h5>
+							<div class="mb-2">
+								<i class="fas fa-users me-2"></i>
+								<span>Quantity: <%= donation.quantity %> persons</span>
+							</div>
+							<div class="mb-2">
+								<i class="fas fa-clock me-2"></i>
+								<span>Cooking Time: <%= new Date(donation.cookingTime).toLocaleString() %></span>
+							</div>
+							<div class="mb-2">
+								<i class="fas fa-truck me-2"></i>
+								<span>Collection Time: <%= new Date(donation.collectionTime).toLocaleString() %></span>
+							</div>
+							<div class="mb-3">
+								<i class="fas fa-user me-2"></i>
+								<span>Agent: <%= donation.agent.firstName + " " + donation.agent.lastName %></span>
+							</div>
+							<% if (donation.collectionImage) { %>
+								<div class="mt-3">
+									<img src="<%= donation.collectionImage %>" 
+										alt="Collection Image" 
+										class="img-fluid rounded cursor-pointer"
+										data-bs-toggle="modal" 
+										data-bs-target="#imageModal<%= index %>"
+										style="width: 100%; height: 200px; object-fit: cover;">
+								</div>
+							<% } %>
+						</div>
+						<div class="card-footer bg-success bg-opacity-10">
+							<small class="text-success">
+								<i class="fas fa-check-circle me-1"></i>
+								<%= donation.status %>
+							</small>
+						</div>
+					</div>
+				</div>
+
+				<!-- Image Modal -->
+				<% if (donation.collectionImage) { %>
+					<div class="modal fade" id="imageModal<%= index %>" tabindex="-1" aria-hidden="true">
+						<div class="modal-dialog modal-lg modal-dialog-centered">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Collection Image - <%= donation.foodType %></h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body p-0">
+									<img src="<%= donation.collectionImage %>" 
+										class="img-fluid w-100" 
+										alt="Collection Image"
+										style="max-height: 80vh; object-fit: contain;">
+								</div>
+								<div class="modal-footer">
+									<div class="text-start flex-grow-1">
+										<p class="mb-1"><strong>Collected by:</strong> <%= donation.agent.firstName + " " + donation.agent.lastName %></p>
+										<p class="mb-1"><strong>Collection Time:</strong> <%= new Date(donation.collectionTime).toLocaleString() %></p>
+									</div>
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% } %>
+			<% }) %>
+		</div>
+	</div>
+</div>
+
+<style>
+	/* Sidebar Styles */
+	#main-wrapper {
+		margin-left: 240px;
+		transition: all 0.3s ease-in-out;
+	}
+
+	#sidebar-toggler-btn {
+		display: none;
+		cursor: pointer;
+	}
+
+	.cursor-pointer {
+		cursor: pointer;
+	}
+
+	.cursor-pointer:hover {
+		opacity: 0.9;
+	}
+
+	.modal-dialog.modal-lg {
+		max-width: 90%;
+	}
+
+	.modal-body {
+		background-color: #f8f9fa;
+	}
+
+	.modal-content {
+		border-radius: 8px;
+		overflow: hidden;
+	}
+
+	@media (max-width: 768px) {
+		#main-wrapper {
+			margin-left: 0;
+		}
+
+		#sidebar-toggler-btn {
+			display: inline-block;
+		}
+	}
+
+	.sidebar-collapsed #main-wrapper {
+		margin-left: 0;
+	}
+
+	/* Theme Colors */
+	.color-theme {
+		color: #4CAF50;
+	}
+
+	/* Card Styles */
+	.card {
+		transition: transform 0.2s;
+	}
+
+	.card:hover {
+		transform: translateY(-5px);
+	}
+
+	.card-title {
+		color: #4CAF50;
+	}
+
+	.fas {
+		color: #4CAF50;
+	}
+</style>
+
+<script>
+	document.getElementById("sidebar-toggler-btn").onclick = function() {
+		document.body.classList.toggle("sidebar-collapsed");
+	};
+
+	// Initialize all modals
+	document.addEventListener('DOMContentLoaded', function() {
+		var modals = document.querySelectorAll('.modal');
+		modals.forEach(function(modal) {
+			new bootstrap.Modal(modal);
+		});
+	});
+</script>

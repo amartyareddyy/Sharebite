@@ -1,0 +1,79 @@
+<%- include('../partials/agentSidebar') %>
+
+<div id="main-wrapper" class="min-vh-100 d-flex flex-column">
+    <div class="bg-white shadow-sm p-3">
+        <span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+        <h5 class="m-0 color-theme d-inline-block">Collected Donations</h5>
+    </div>
+
+    <div class="container-fluid py-4">
+        <div class="row g-4">
+            <% collectedDonations.forEach(donation => { %>
+                <div class="col-md-6">
+                    <div class="card shadow-sm h-100">
+                        <% if (donation.collectionImage) { %>
+                            <img src="<%= donation.collectionImage %>" class="card-img-top" alt="Collection Image" style="height: 200px; object-fit: cover;">
+                        <% } else { %>
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <span class="text-muted">No image uploaded</span>
+                            </div>
+                        <% } %>
+                        <div class="card-body">
+                            <h5 class="card-title text-success"><%= donation.foodType %></h5>
+                            <div class="mb-2">
+                                <i class="fas fa-users me-2 text-success"></i>
+                                <span>Quantity: <%= donation.quantity %> persons</span>
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-map-marker-alt me-2 text-success"></i>
+                                <span>Address: <%= donation.address %></span>
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-clock me-2 text-success"></i>
+                                <span>Collection Time: <%= new Date(donation.collectionTime).toLocaleString() %></span>
+                            </div>
+                            <div class="mb-3">
+                                <i class="fas fa-check-circle me-2 text-success"></i>
+                                <span>Status: <span class="badge bg-success"><%= donation.status %></span></span>
+                            </div>
+                            <% if (!donation.collectionImage) { %>
+                                <a href="/agent/donation/<%= donation._id %>/upload" class="btn btn-success w-100">
+                                    <i class="fas fa-upload me-2"></i>Upload Collection Image
+                                </a>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+
+            <% if (collectedDonations.length === 0) { %>
+                <div class="col-12 text-center mt-5">
+                    <div class="p-5 bg-light rounded-3">
+                        <h4 class="text-muted">No collected donations yet</h4>
+                        <p class="text-muted">When you collect donations, they will appear here.</p>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<style>
+    .color-theme {
+        color: #4CAF50;
+    }
+    
+    .card {
+        transition: transform 0.2s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+</style>
+
+<script>
+    document.getElementById("sidebar-toggler-btn").onclick = function() {
+        document.body.classList.toggle("sidebar-collapsed");
+    };
+</script> 

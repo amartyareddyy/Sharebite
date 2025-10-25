@@ -1,0 +1,40 @@
+<main>
+	<%- include('../partials/agentSidebar') %>
+	
+	<div id="main-wrapper">
+		<div class="bg-white shadow-sm p-3">
+			<span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+			<h5 class="m-0 color-theme d-inline-block">Confirm Delivery</h5>
+		</div>
+		
+		<div class="container mt-4">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Donation Details</h5>
+					<div class="row mb-4">
+						<div class="col-md-6">
+							<p><strong>Donor:</strong> <%= donation.donor.firstName %> <%= donation.donor.lastName %></p>
+							<p><strong>Food Type:</strong> <%= donation.foodType %></p>
+							<p><strong>Quantity:</strong> <%= donation.quantity %></p>
+						</div>
+						<div class="col-md-6">
+							<p><strong>Collection Time:</strong> <%= new Date(donation.collectionTime).toLocaleString() %></p>
+							<p><strong>Address:</strong> <%= donation.address %></p>
+							<p><strong>Phone:</strong> <%= donation.phone %></p>
+						</div>
+					</div>
+
+					<form action="/agent/donations/<%= donation._id %>/confirm" method="POST" enctype="multipart/form-data">
+						<div class="mb-3">
+							<label for="deliveryImage" class="form-label">Upload Delivery Confirmation Image</label>
+							<input type="file" class="form-control" id="deliveryImage" name="deliveryImage" accept="image/*" required>
+							<div class="form-text">Please upload a clear image showing the food being delivered to the orphanage.</div>
+						</div>
+						
+						<button type="submit" class="btn btn-primary">Confirm Delivery</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main> 

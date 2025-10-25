@@ -1,0 +1,36 @@
+<main>
+    <%- include('../partials/agentSidebar') %>
+    
+    <div id="main-wrapper">
+        <div class="bg-white shadow-sm p-3">
+            <span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+            <h5 class="m-0 color-theme d-inline-block">Upload Collection Image</h5>
+        </div>
+
+        <div class="container mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="donation-details mb-4">
+                        <h4>Donation Details</h4>
+                        <p><strong>Food Type:</strong> <%= donation.foodType %></p>
+                        <p><strong>Quantity:</strong> <%= donation.quantity %></p>
+                        <p><strong>Address:</strong> <%= donation.address %></p>
+                        <p><strong>Collection Time:</strong> <%= donation.collectionTime ? new Date(donation.collectionTime).toLocaleString() : 'Not collected yet' %></p>
+                    </div>
+
+                    <form action="/agent/donation/<%= donation._id %>/upload-image" method="POST" enctype="multipart/form-data">
+                        <div class="form-group mb-3">
+                            <label for="collectionImage">Select Image</label>
+                            <input type="file" class="form-control" id="collectionImage" name="collectionImage" accept="image/*" required>
+                            <small class="form-text text-muted">Please upload a clear image of the collected food items. Maximum file size: 5MB</small>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Upload Image</button>
+                            <a href="/agent/collections/previous" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main> 

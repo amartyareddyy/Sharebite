@@ -1,0 +1,262 @@
+<main>
+    <div class="container py-5">
+        <!-- Hero Section -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="about-hero text-center">
+                    <h1 class="display-4 mb-4">About ShareBite</h1>
+                    <p class="lead">Connecting food donors with those in need through technology and compassion</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Section -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h2>Our Mission</h2>
+                    <p>ShareBite aims to reduce food waste and hunger by creating a seamless connection between food donors and those in need. We believe that no one should go hungry while good food goes to waste.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h2>Our Vision</h2>
+                    <p>To create a world where food waste is eliminated, and everyone has access to nutritious meals. We envision a future where technology and community spirit work together to solve hunger.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Values Section -->
+        <div class="row mb-5">
+            <div class="col-12 text-center mb-4">
+                <h2>Our Core Values</h2>
+                <p class="lead">The principles that guide everything we do</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Compassion</h3>
+                    <p>We believe in treating everyone with dignity and respect, understanding that circumstances can change for anyone.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="value-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Community</h3>
+                    <p>We foster strong community bonds, encouraging collaboration between donors, volunteers, and recipients.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="value-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Sustainability</h3>
+                    <p>We promote sustainable practices by reducing food waste and encouraging responsible consumption.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impact Section -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="impact-section text-center">
+                    <h2>Our Impact</h2>
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="impact-card">
+                                <div class="impact-number">1000+</div>
+                                <div class="impact-label">Meals Donated</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="impact-card">
+                                <div class="impact-number">500+</div>
+                                <div class="impact-label">Active Donors</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="impact-card">
+                                <div class="impact-number">50+</div>
+                                <div class="impact-label">Delivery Partners</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="impact-card">
+                                <div class="impact-number">100+</div>
+                                <div class="impact-label">Communities Served</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join Us Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="join-section text-center">
+                    <h2>Join Our Mission</h2>
+                    <p class="lead mb-4">Be part of the solution to end hunger and reduce food waste</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="/donor/register" class="btn btn-primary btn-lg">
+                            <i class="fas fa-hand-holding-heart me-2"></i>Become a Donor
+                        </a>
+                        <a href="/agent/register" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-truck me-2"></i>Become a Delivery Partner
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+.about-hero {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 60px 30px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/assets/images/pattern.png') repeat;
+    opacity: 0.1;
+}
+
+.about-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+}
+
+.about-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.about-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.value-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+}
+
+.value-card i {
+    font-size: 2.5rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.impact-section {
+    background: #f8f9fa;
+    padding: 60px 30px;
+    border-radius: 20px;
+}
+
+.impact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.impact-card:hover {
+    transform: translateY(-5px);
+}
+
+.impact-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.impact-label {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.join-section {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 60px 30px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.join-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/assets/images/pattern.png') repeat;
+    opacity: 0.1;
+}
+
+.btn-outline-primary {
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+}
+
+.btn-outline-primary:hover {
+    background: #4CAF50;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 40px 20px;
+    }
+    
+    .impact-section {
+        padding: 40px 20px;
+    }
+    
+    .join-section {
+        padding: 40px 20px;
+    }
+}
+</style> 
