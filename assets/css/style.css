@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root
+{
+	--theme-color: #3f51b5;
+}
+
+body
+{
+	height: 100vh;
+	background-color: #f2f2f2;
+	font-family: 'Roboto', sans-serif;
+	overflow-x: hidden;
+}
+
+
+header
+{
+	background-color: var(--theme-color);
+	height: 50px;
+	font-weight: 500;
+}
+header .nav-link
+{
+	color: white !important;
+}
+header #navbarSupportedContent
+{
+	background-color: var(--theme-color);
+}
+header .nav-link:hover
+{
+	transition: 0.3s;
+	color: #ddd1d1 !important;
+}
+header .user-icon
+{
+	padding: 0.4rem;
+    color: white !important;
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 40px;
+    text-align: center;
+}
+header .user-icon-link
+{
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+header .user-icon-link:hover .user-icon
+{
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+header .navbar-toggler:focus
+{
+	box-shadow: none;
+}
+
+.bg-img-1
+{
+	min-height: calc(100vh - 50px);
+	background: url("/assets/images/img-1.jpg") no-repeat center;
+	background-size: cover;
+}
+.bg-img-2
+{
+	min-height: calc(100vh - 50px);
+	background: url("/assets/images/img-2.jpg") no-repeat center;
+	background-size: cover;
+}
+
+.color-theme
+{
+	color: var(--theme-color);
+}
+
+.btn
+{
+	padding: 6px 15px;
+	font-size: 18px;
+	color: white;
+	background-color: var(--theme-color);
+	border-radius: 0px;
+}
+.btn-danger
+{
+	background-color: rgb(223, 28, 28);
+}
+.btn:hover
+{
+	box-shadow: 3px 4px 6px 0px grey;
+	color: white;
+}
+
+#carousel img
+{
+	width: 100vw;
+	height: calc(100vh - 50px);
+	object-fit: cover;
+	object-position: center;
+}
+#carousel .carousel-control-prev-icon, #carousel .carousel-control-next-icon
+{
+	transform: scaleX(1.5) scaleY(2);
+	background-color: #000000;
+	cursor: pointer;
+}
+
+
+.form-date-input
+{
+	display: block;
+    width: 100%;
+    padding: 6px;
+    border-radius: 4px;
+	border: 1px solid #ced4da;
+}
+.form-date-input:focus
+{
+	box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+	outline: none;
+}
+
+.text-pending
+{ color: rgb(243, 172, 18) !important; }
+.text-rejected
+{ color: red !important; }
+.text-accepted
+{ color: green !important; }
+.text-assigned
+{ color: blue !important; }
+.text-collected
+{ color: #3f51b5 !important; }
+
+
+.alerts-wrapper
+{
+	position: absolute;
+	right: 0px;
+	width: fit-content;
+	font-weight: bold;
+	animation: moveLeft 0.1s linear;
+	z-index: 100;
+}
+
+.alerts-wrapper .alert-danger
+{
+	color: white;
+	background-color: #e22a2a;
+}
+.alerts-wrapper .alert-success
+{
+	color: white;
+	background-color: #1fa64e;
+}
+
+
+@keyframes moveLeft {
+	from { right: -100px; }
+	to { right: 0px; }
+}
+
+/* Carousel Styles */
+.carousel-item {
+    height: 600px;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.carousel-caption h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-caption p {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Card Hover Effects */
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Feature Icons */
+.fa-3x {
+    color: var(--theme-color);
+}
+
+/* Impact Section */
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: var(--theme-color);
+    border-color: var(--theme-color);
+}
+
+.btn-primary:hover {
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+}
+
+.btn-outline-primary {
+    color: var(--theme-color);
+    border-color: var(--theme-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--theme-color);
+    border-color: var(--theme-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 400px;
+    }
+    
+    .carousel-caption {
+        padding: 1rem;
+    }
+    
+    .carousel-caption h1 {
+        font-size: 2rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+}
